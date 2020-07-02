@@ -16,6 +16,8 @@ Every hole must be made out one or more **non-solid** clipnode leaves, since the
 
 This will give us a set of possible holes. However, most of these regions are totally midair, meaning they cannot possibly be holes. They are filtered out so that only those that touch some solid regions are left. This filtering process makes the running time **much** slower. This is only a matter of seconds not minutes though.
 
+At this time, only the volume is calculated. If this volume is bigger than a threshold, then the region is rejected. Some tweaking of parameters may be needed to be sure that no actual holes are rejected.
+
 # In-tool visualization
 When the tool is finished, it opens an OpenGL+Glut application showing the solid nodes and highlighting the non-solid clipnodes that are possibly holes. The navigation is similar to that of in-game noclip, that is, same camera control.
 
