@@ -9,7 +9,7 @@ Consider a binary tree whose nodes are planes in 3d space or *volume type*. The 
 This technique allows the game for a very efficient detection. However, it restricts the volume regions to have polygonal surfaces.
 
 ## Holes in collision
-The BSP trees used for collision were generated automatically. However, this the map compiler used to make the original map files didn't do that flawlessly. Some maps have holes that the player (or maybe projectiles) can go through even though it would seem impossible by looking at the visible map. These flaws aren't compatible between the three collision worlds.
+The BSP trees used for collision were generated automatically. However, the map compiler used to make the original map files didn't do that 100% correct. Some maps have holes that the player (or maybe projectiles) can go through even though it would seem impossible by looking at the visible map. These flaws aren't compatible between the three collision worlds. For example, a hole in the projectile hull doens't mean there will be a hole for the other ones.
 
 ## Detecting possible holes
 Every hole must be made out of one or more **non-solid** clipnode leaves, since the player(or projectiles) can pass through. There is no other alternative. These clipnodes must be small(we are looking for flaws anyway) i.e, thin like a needle or with very small volume. The problem is that the map files only specify the BSP for the collision. To know whether a region is thin or of small volume, we need to know the it's exact vertices and edges, which is not given. This tool calculates them.
