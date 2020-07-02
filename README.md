@@ -12,9 +12,9 @@ This technique allows the game for a very efficient detection. However, it restr
 The BSP trees used for collision were generated automatically. However, this the map compiler used to make the original map files didn't do that flawlessly. Some maps have holes that the player (or maybe projectiles) can go through even though it would seem impossible by looking at the visible map. These flaws aren't compatible between the three collision worlds.
 
 ## Detecting possible holes
-Every hole must be made out one or more **non-solid** clipnode leaves, since the player(or projectiles) can pass through. There is no other alternative. These clipnodes must be small(we are looking for flaws anyway) i.e, thin like a needle or with very small volume. The problem is that the map files only specify the BSP for the collision. To know whether a region is thin or of small volume, we need to know the it's exact vertices and edges, which is not given. This tool calculates them.
+Every hole must be made out of one or more **non-solid** clipnode leaves, since the player(or projectiles) can pass through. There is no other alternative. These clipnodes must be small(we are looking for flaws anyway) i.e, thin like a needle or with very small volume. The problem is that the map files only specify the BSP for the collision. To know whether a region is thin or of small volume, we need to know the it's exact vertices and edges, which is not given. This tool calculates them.
 
-This will give us a set of possible holes. However, most of these regions are totally midair, meaning they cannot possibly be holes. They are filtered out so that only those that touch some solid regions are left. This filtering process makes the running time **much** slower. This is only a matter of seconds not minutes though.
+This will give us a set of possible holes. However, most of these regions are totally midair, meaning they cannot possibly be holes. They are filtered out so that only those that touch some solid regions are left. This filtering process makes the running time **much** slower. This is only by a matter of seconds not minutes.
 
 At this time, only the volume is calculated. If this volume is bigger than a threshold, then the region is rejected. Some tweaking of parameters may be needed to be sure that no actual holes are rejected.
 
